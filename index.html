@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>水果乐园：汉语小勇士 — Taman Buah Mandarin LCN</title>
+<style>
+:root{--blue:#1689ed;--navy:#123a82;--green:#23b94d;--yellow:#ffe56c;--pink:#ff4d86;--purple:#8748ef;--cream:#fffdf2}
+*{box-sizing:border-box}body{margin:0;font-family:"Trebuchet MS",Arial,sans-serif;color:var(--navy);background:linear-gradient(#5bd1ff,#d9f7ff 45%,#a7e77e 46%,#54c85e);min-height:100vh}
+button{font:inherit;font-weight:800;border:0;cursor:pointer;transition:transform .15s,filter .15s}button:hover{filter:brightness(1.06);transform:translateY(-2px)}button:focus-visible{outline:4px solid #ffb600;outline-offset:3px}
+.brand{position:fixed;z-index:20;bottom:8px;left:50%;transform:translateX(-50%);background:#fffdf0eF;border:2px solid #f6cb54;border-radius:999px;padding:7px 16px;font-size:12px;font-weight:900;box-shadow:0 3px 12px #22557744;white-space:nowrap}
+.top{padding:16px 18px 10px;text-align:center;position:relative}.sign{display:inline-block;background:linear-gradient(#ffef9d,#ffc85c);border:5px solid #fff;border-radius:24px;padding:10px 28px;box-shadow:0 7px 0 #b77d2c,0 10px 18px #2675a855;transform:rotate(-1deg)}.sign h1{font-size:clamp(24px,4vw,42px);margin:0;color:#e92939;text-shadow:2px 3px #fff,-1px -1px #fff}.sign p{margin:3px 0 0;color:#1260b5;font-weight:900}.skydecor{position:absolute;inset:0;pointer-events:none;font-size:clamp(20px,3vw,38px);opacity:.9}.skydecor span{position:absolute}.skydecor span:nth-child(1){left:3%;top:10px}.skydecor span:nth-child(2){right:4%;top:8px}.skydecor span:nth-child(3){left:13%;bottom:0}.skydecor span:nth-child(4){right:14%;bottom:0}
+.shell{max-width:1200px;margin:10px auto 55px;padding:clamp(10px,2vw,24px);width:calc(100% - 22px);background:#fffdf0;border:7px solid #ffdb72;border-radius:32px;box-shadow:0 10px 0 #c18b3e,0 18px 35px #164e7833;min-height:65vh;position:relative;overflow:hidden}
+.screen{display:none}.screen.active{display:block;animation:pop .35s ease-out}@keyframes pop{from{opacity:0;transform:scale(.97) translateY(8px)}to{opacity:1;transform:scale(1) translateY(0)}}
+.hero{text-align:center;padding:20px 10px 26px}.mascot{font-size:clamp(68px,12vw,120px);filter:drop-shadow(0 7px 2px #8ac7df);animation:bob 2s infinite ease-in-out;display:inline-block}@keyframes bob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-10px) rotate(3deg)}}
+.hero h2{font-size:clamp(25px,4vw,42px);margin:5px 0;color:#f0394e;text-shadow:2px 2px #ffe7a4}.hero p{font-size:clamp(15px,2vw,19px);font-weight:700;line-height:1.5;max-width:700px;margin:10px auto}
+.btn{border-radius:18px;padding:14px 20px;box-shadow:0 5px 0 #145bb0;color:#fff;background:linear-gradient(#39b5ff,#0877e2);margin:5px}.btn.green{background:linear-gradient(#4ce56a,#13a83b);box-shadow:0 5px 0 #087b2c}.btn.pink{background:linear-gradient(#ff6cab,#ed2471);box-shadow:0 5px 0 #a6154b}.btn.purple{background:linear-gradient(#bd74ff,#7934db);box-shadow:0 5px 0 #4b209a}.btn.gray{background:linear-gradient(#9cb5d8,#597ca9);box-shadow:0 5px 0 #3d587c}.btn.small{padding:9px 13px;border-radius:13px;font-size:14px}
+.buttonrow{display:flex;justify-content:center;flex-wrap:wrap;gap:8px;margin:15px auto}
+.mini-note{background:#fff3b9;border:2px solid #ffdb70;border-radius:16px;padding:12px;margin:14px auto;max-width:700px}
+.stats{display:grid;grid-template-columns:1fr minmax(100px,2fr) 1fr;gap:12px;align-items:center;margin-bottom:18px}.pill{background:#087de2;color:#fff;padding:11px 14px;border-radius:18px;text-align:center;font-weight:900;box-shadow:0 4px 0 #0757a8}.progress{height:22px;border-radius:99px;background:#d5ecff;border:3px solid #a4d8ff;overflow:hidden}.progress>div{height:100%;width:0;background:linear-gradient(90deg,#75f45d,#18b843);border-radius:99px;transition:width .3s}
+.quizgrid{display:grid;grid-template-columns:minmax(210px,.9fr) minmax(300px,1.3fr) minmax(155px,.55fr);gap:18px;align-items:stretch}.fruitpanel{border:4px solid #82d1ff;border-radius:24px;background:linear-gradient(#f4fdff,#e4f7ff);padding:16px;text-align:center;display:flex;flex-direction:column;justify-content:center;min-height:320px}.fruitpic{font-size:clamp(95px,12vw,155px);line-height:1.2;filter:drop-shadow(0 7px 3px #66885555);animation:fruitin .45s ease-out}@keyframes fruitin{from{transform:scale(.5) rotate(-25deg);opacity:.2}to{transform:scale(1) rotate(0);opacity:1}}.fruitname{display:none;font-size:25px;font-weight:900;background:#fff0a0;border-radius:99px;padding:10px;margin-top:10px}
+.question{text-align:center}.hanzi-card{background:linear-gradient(120deg,#fff2c7,#fff9e9);border:4px solid #ffce54;border-radius:25px;padding:10px 8px;margin-bottom:10px}.hanzi{font-family:SimSun,"Noto Serif CJK SC",serif;font-size:clamp(38px,6vw,72px);font-weight:900;letter-spacing:5px;line-height:1.2}.pinyin{font-size:clamp(22px,3vw,30px);font-weight:900;color:#17488e}.question h3{margin:10px 0 14px;font-size:clamp(18px,2.2vw,24px)}.answers{display:grid;gap:9px}.answer{display:flex;align-items:center;gap:12px;text-align:left;border:3px solid #8acbff;border-radius:19px;background:#e9f7ff;color:#153b7e;padding:11px 13px;min-height:65px;font-size:clamp(15px,1.7vw,20px);width:100%}.answer .letter{flex:0 0 42px;height:42px;border-radius:50%;display:grid;place-items:center;background:#2687ef;color:#fff;font-size:23px}.answer.correct{background:#d7ffd9;border-color:#2acb53}.answer.correct .letter{background:#20af42}.answer.wrong{background:#ffe0e8;border-color:#ff4776}.answer.wrong .letter{background:#f33e68}.answer:disabled{cursor:default;transform:none}.sidebox{border:3px solid #ffe28b;background:#fff9d9;border-radius:23px;padding:12px;text-align:center;margin-bottom:10px}.timer{font-size:32px;font-weight:1000;color:#1687e9}.timer.warning{color:#e5a300}.timer.danger{color:#f1284c;animation:pulse .45s infinite alternate}@keyframes pulse{to{transform:scale(1.1)}}.timerbar{height:10px;background:#f4df9b;border-radius:99px;overflow:hidden;margin:7px 0}.timerbar div{height:100%;width:100%;background:#26c34f;transition:width .2s linear}.timerbar div.danger{background:#ff355e}.sidebox h3{margin:3px}.sidebox p{font-size:14px;line-height:1.4;margin:7px 0}.feedback{font-weight:900;font-size:18px;min-height:28px;margin:8px 0;color:#17843a}.quizfooter{border-top:2px solid #f5dfa0;margin-top:18px;padding-top:12px;display:flex;justify-content:center;gap:8px;flex-wrap:wrap}
+.learn-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}.learn-card{border:3px solid #9edbff;border-radius:19px;background:#effaff;text-align:center;padding:14px;cursor:pointer;box-shadow:0 4px 0 #badcf1}.learn-card .fruitpic{font-size:60px}.learn-card .hanzi{font-size:30px;letter-spacing:2px}.learn-card .pinyin{font-size:18px}.learn-card .translation{font-weight:800;margin-top:4px}.learn-card.learned{border-color:#2acb53;background:#e3ffe5}
+.result{text-align:center;padding:20px 5px}.result .mascot{font-size:100px}.scorebig{font-size:clamp(38px,7vw,68px);color:#ef3d59;font-weight:1000;text-shadow:2px 3px #ffe9a4}.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;max-width:650px;margin:18px auto}.result-stat{background:#eef9ff;border:3px solid #a7ddff;border-radius:18px;padding:14px}.result-stat strong{font-size:25px;display:block}.achievement{font-size:clamp(23px,4vw,35px);font-weight:1000;color:#9250dd}.stars{font-size:45px;letter-spacing:8px;animation:starpop .8s ease-out}@keyframes starpop{0%{transform:scale(0)}80%{transform:scale(1.2)}100%{transform:scale(1)}}.confetti{position:fixed;top:-20px;z-index:50;font-size:24px;pointer-events:none;animation:fall 2.7s linear forwards}@keyframes fall{to{transform:translateY(110vh) rotate(600deg);opacity:0}}
+@media(max-width:850px){.quizgrid{grid-template-columns:minmax(160px,.8fr) minmax(260px,1.2fr)}.sidecol{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:10px}.fruitpanel{min-height:280px}.stats{grid-template-columns:1fr 1.4fr 1fr}.pill{font-size:13px;padding:9px 7px}}
+@media(max-width:580px){.top{padding-top:14px}.shell{border-width:4px;border-radius:22px;margin-top:7px}.sign{padding:9px 15px}.quizgrid{grid-template-columns:1fr}.fruitpanel{min-height:210px}.fruitpic{font-size:100px}.sidecol{grid-column:auto;grid-template-columns:1fr 1fr}.stats{grid-template-columns:1fr 1fr}.stats .progress{grid-column:1/-1;grid-row:2}.result-grid{grid-template-columns:1fr}.brand{font-size:10px;padding:6px 11px}.answer{min-height:58px}.hanzi{font-size:45px}}
+</style>
+</head>
+<body>
+<header class="top">
+ <div class="skydecor"><span>☁️</span><span>🌈</span><span>🌼</span><span>🦋</span></div>
+ <div class="sign"><h1>水果乐园</h1><p>SHUǏGUǑ LÈYUÁN · TAMAN BUAH MANDARIN</p></div>
+</header>
+<main class="shell">
+<section class="screen active" id="home">
+ <div class="hero"><div class="mascot">🐼</div><h2>汉语小勇士：欢乐词汇大冒险！</h2><p>Halo, jagoan Mandarin! Ayo jelajahi taman buah, dengarkan pengucapan Putonghua, dan kumpulkan bintang!</p>
+ <div class="mini-note">🍎 20 kosakata buah · ⏱️ 30 detik per soal · ⭐ Hadiah dan pencapaian seru</div>
+ <div class="buttonrow"><button class="btn green" onclick="startGame()">🚀 MULAI PETUALANGAN</button><button class="btn" onclick="showLearn()">📚 BELAJAR KOSAKATA</button></div>
+ <div class="buttonrow"><button class="btn purple" onclick="toggleAudio()">🔊 <span id="audioLabel">SUARA AKTIF</span></button><button class="btn gray" onclick="howTo()">❔ CARA BERMAIN</button></div>
+ <p id="welcomeNarration">“三、二、一，开始！Sān, èr, yī, kāishǐ!”</p></div>
+</section>
+<section class="screen" id="learn">
+ <div class="hero" style="padding-bottom:8px"><div class="mascot" style="font-size:70px">🐼🍉</div><h2>Kenali Buah-Buahan!</h2><p>Tekan kartu buah untuk mendengar namanya dalam Bahasa Mandarin.</p></div>
+ <div class="learn-grid" id="learnGrid"></div>
+ <div class="buttonrow"><button class="btn gray" onclick="showScreen('home')">🏠 MENU UTAMA</button><button class="btn green" onclick="startGame()">🎮 MULAI KUIS</button></div>
+</section>
+<section class="screen" id="quiz">
+ <div class="stats"><div class="pill" id="qCount">Soal 1 dari 20</div><div class="progress"><div id="progressFill"></div></div><div class="pill" id="answeredCount">Sudah dijawab: 0/20</div></div>
+ <div class="quizgrid">
+  <div class="fruitpanel"><div class="fruitpic" id="fruitEmoji">🍎</div><div class="fruitname" id="fruitLabel" aria-hidden="true"></div><div class="buttonrow"><button class="btn small" onclick="speakCurrent()">🔊 Dengarkan</button></div></div>
+  <div class="question"><div class="hanzi-card"><div class="hanzi" id="questionHanzi">苹果</div><div class="pinyin" id="questionPinyin">píng guǒ</div></div><h3 id="questionPrompt">Apakah arti Hanzi di atas?</h3><div class="answers" id="answers"></div><div class="feedback" id="feedback" aria-live="polite"></div><div class="buttonrow"><button class="btn green" id="nextBtn" onclick="nextQuestion()" disabled>SOAL BERIKUTNYA ➜</button></div></div>
+  <div class="sidecol"><div class="sidebox"><h3>⏱️ WAKTU</h3><div class="timer" id="timer">30</div><div class="timerbar"><div id="timerFill"></div></div><p>Jawab sebelum waktunya habis!</p></div><div class="sidebox"><h3>💡 Ingat!</h3><p id="hintText">Lihat gambar dan pilih jawaban yang benar.</p><button class="btn small purple" onclick="speakCurrent()">🔊 Audio Mandarin</button></div></div>
+ </div>
+ <div class="quizfooter"><button class="btn gray small" onclick="prevQuestion()">⬅ SEBELUMNYA</button><button class="btn purple small" onclick="startGame()">🔀 ACAK ULANG</button><button class="btn pink small" onclick="confirmHome()">🏠 MENU UTAMA</button><button class="btn small" onclick="toggleAudio()">🔊 MUTE / SUARA</button></div>
+</section>
+<section class="screen" id="result">
+ <div class="result"><div class="mascot" id="resultMascot">🐼🏆</div><h2 id="resultTitle">Petualangan Selesai!</h2><div class="scorebig" id="scoreBig">0 poin</div><div class="stars" id="stars">☆☆☆</div><div class="achievement" id="achievement">Penjelajah Buah</div><p id="resultMessage">Kamu hebat! Terus belajar Mandarin, ya!</p>
+ <div class="result-grid"><div class="result-stat">Benar<strong id="correctStat">0</strong></div><div class="result-stat">Salah<strong id="wrongStat">0</strong></div><div class="result-stat">Tidak dijawab<strong id="missStat">0</strong></div><div class="result-stat">Nilai<strong id="percentStat">0%</strong></div><div class="result-stat">Rata-rata waktu<strong id="avgStat">0 dtk</strong></div><div class="result-stat">Rekor terbaik<strong id="bestStat">0</strong></div></div>
+ <div class="buttonrow"><button class="btn green" onclick="startGame()">🔁 MAIN LAGI</button><button class="btn" onclick="showLearn()">📚 BELAJAR LAGI</button><button class="btn pink" onclick="showScreen('home')">🏠 MENU UTAMA</button></div></div>
+</section>
+</main>
+<div class="brand">by lcnpalembang-08994477998</div>
+<div id="live" aria-live="polite" style="position:absolute;left:-9999px"></div>
+<script>
+const fruits=[
+ {hanzi:"苹果",pinyin:"píng guǒ",id:"Apel",emoji:"🍎",alt:"apel"},
+ {hanzi:"木瓜",pinyin:"mù guā",id:"Pepaya",emoji:"🍈",alt:"pepaya"},
+ {hanzi:"香蕉",pinyin:"xiāng jiāo",id:"Pisang",emoji:"🍌",alt:"pisang"},
+ {hanzi:"榴莲",pinyin:"liú lián",id:"Durian",emoji:"🌰",alt:"durian"},
+ {hanzi:"葡萄",pinyin:"pú tao",id:"Anggur",emoji:"🍇",alt:"anggur"},
+ {hanzi:"黄梨",pinyin:"huáng lí",id:"Nanas",emoji:"🍍",alt:"nanas",alias:"凤梨 fèng lí"},
+ {hanzi:"杨桃",pinyin:"yáng táo",id:"Belimbing",emoji:"⭐",alt:"belimbing"},
+ {hanzi:"红毛丹",pinyin:"hóng máo dān",id:"Rambutan",emoji:"🔴",alt:"rambutan"},
+ {hanzi:"芒果",pinyin:"máng guǒ",id:"Mangga",emoji:"🥭",alt:"mangga"},
+ {hanzi:"橘子",pinyin:"jú zi",id:"Jeruk",emoji:"🍊",alt:"jeruk"},
+ {hanzi:"西瓜",pinyin:"xī guā",id:"Semangka",emoji:"🍉",alt:"semangka"},
+ {hanzi:"哈密瓜",pinyin:"hā mì guā",id:"Melon Hami",emoji:"🍈",alt:"melon"},
+ {hanzi:"香梨",pinyin:"xiāng lí",id:"Pir",emoji:"🍐",alt:"pir"},
+ {hanzi:"草莓",pinyin:"cǎo méi",id:"Stroberi",emoji:"🍓",alt:"stroberi"},
+ {hanzi:"山竹",pinyin:"shān zhú",id:"Manggis",emoji:"🟣",alt:"manggis"},
+ {hanzi:"鳄梨",pinyin:"è lí",id:"Alpukat",emoji:"🥑",alt:"alpukat"},
+ {hanzi:"火龙果",pinyin:"huǒ lóng guǒ",id:"Buah naga",emoji:"🐉",alt:"buah naga"},
+ {hanzi:"樱桃",pinyin:"yīng táo",id:"Ceri",emoji:"🍒",alt:"ceri"},
+ {hanzi:"柠檬",pinyin:"níng méng",id:"Lemon",emoji:"🍋",alt:"lemon"},
+ {hanzi:"蛇皮果",pinyin:"shé pí guǒ",id:"Salak",emoji:"🥔",alt:"salak"}
+];
+let audioOn=true,quiz=[],index=0,answered=0,correct=0,wrong=0,missed=0,score=0,timerId=null,deadline=0,locked=false,answersLog=[],questionStart=0,totalResponseMs=0,learned=new Set();
+const $=id=>document.getElementById(id);
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.toggle('active',s.id===id));window.scrollTo({top:0,behavior:'smooth'});}
+function toggleAudio(){audioOn=!audioOn;$('audioLabel').textContent=audioOn?'SUARA AKTIF':'SUARA MATI';if(!audioOn&&'speechSynthesis'in window)speechSynthesis.cancel();if(audioOn)speak('Halo, jagoan Mandarin!');}
+function speak(text,lang='zh-CN'){if(!audioOn)return;if(!('speechSynthesis'in window)){announce('Audio ucapan tidak didukung browser ini.');return;}speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang=lang;u.rate=0.82;u.pitch=1.12;const voices=speechSynthesis.getVoices();const v=voices.find(x=>x.lang.toLowerCase().startsWith('zh-cn'))||voices.find(x=>x.lang.toLowerCase().startsWith('zh'));if(v)u.voice=v;speechSynthesis.speak(u);}
+function sayId(text){if(!audioOn)return;if(!('speechSynthesis'in window))return;speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(text);u.lang='id-ID';u.rate=.95;u.pitch=1.08;speechSynthesis.speak(u);}
+function announce(t){$('live').textContent=t;}
+function howTo(){alert('Cara bermain:\\n1. Lihat gambar, Hanzi, atau dengarkan audio.\\n2. Pilih satu dari empat jawaban.\\n3. Setiap soal memiliki waktu 30 detik.\\n4. Jawaban benar mendapat 100 poin; jawaban benar dalam 10 detik pertama mendapat bonus 20 poin.\\n5. Selesaikan 20 soal untuk mendapatkan gelar dan bintang!');}
+function confirmHome(){if(confirm('Kembali ke menu utama? Progres putaran ini akan berakhir.')){stopTimer();showScreen('home');}}
+function shuffle(arr){let a=arr.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]];}return a;}
+function buildLearn(){const grid=$('learnGrid');grid.innerHTML='';fruits.forEach((f,i)=>{const b=document.createElement('button');b.className='learn-card'+(learned.has(i)?' learned':'');b.innerHTML=`<div class="fruitpic">${f.emoji}</div><div class="hanzi">${f.hanzi}</div><div class="pinyin">${f.pinyin}</div><div class="translation">${f.id}</div>${f.alias?`<small>${f.alias}</small>`:''}<div style="margin-top:8px">🔊 Dengarkan ${learned.has(i)?'✓':''}</div>`;b.onclick=()=>{speak(f.hanzi);learned.add(i);b.classList.add('learned');b.querySelector('div:last-child').textContent='🔊 Dengarkan ✓';};grid.appendChild(b);});}
+function showLearn(){buildLearn();showScreen('learn');}
+function startGame(){stopTimer();quiz=shuffle(fruits.map((f,i)=>({...f,originalIndex:i,kind:Math.floor(Math.random()*3)})));index=0;answered=0;correct=0;wrong=0;missed=0;score=0;answersLog=[];totalResponseMs=0;showScreen('quiz');renderQuestion();}
+function stopTimer(){if(timerId!==null){clearInterval(timerId);timerId=null;}}
+function renderQuestion(){
+ stopTimer();if(index>=quiz.length){finishGame();return;}
+ locked=false;const f=quiz[index];questionStart=Date.now();lastSpoken=0;
+ $('qCount').textContent=`Soal ${index+1} dari ${quiz.length}`;$('answeredCount').textContent=`Sudah dijawab: ${answered}/20`;$('progressFill').style.width=`${index/quiz.length*100}%`;
+ $('fruitEmoji').textContent=f.emoji;$('fruitLabel').textContent='';$('questionHanzi').textContent='';$('questionPinyin').textContent='';$('feedback').textContent='';$('nextBtn').disabled=true;$('nextBtn').textContent=index===quiz.length-1?'LIHAT HASIL 🏆':'SOAL BERIKUTNYA ➜';
+ const kinds=[
+  {prompt:'Perhatikan gambar buah. Apa arti buah ini dalam Bahasa Indonesia?',mode:'image',hint:'Lihat gambar buah saja, lalu pilih nama yang benar.'},
+  {prompt:'Apa arti Hanzi berikut?',mode:'hanzi',hint:'Perhatikan bentuk Hanzi. Pinyin dan gambar petunjuk disembunyikan.'},
+  {prompt:'Dengarkan pengucapan Mandarin. Buah apakah yang disebut?',mode:'audio',hint:'Dengarkan baik-baik, lalu pilih arti Bahasa Indonesia.'}
+ ];
+ const k=kinds[f.kind];$('questionPrompt').textContent=k.prompt;$('hintText').textContent=k.hint;
+ const fruitPanel=document.querySelector('.fruitpanel');const hanziCard=document.querySelector('.hanzi-card');
+ fruitPanel.style.display=k.mode==='image'?'flex':'none';hanziCard.style.display=(k.mode==='hanzi'||k.mode==='audio')?'block':'none';fruitPanel.querySelector('.buttonrow').style.display='none';
+ if(k.mode==='hanzi'){$('questionHanzi').textContent=f.hanzi;$('questionPinyin').textContent='';}
+ if(k.mode==='audio'){ $('questionHanzi').textContent='🔊 听一听';$('questionPinyin').textContent='Dengarkan audio';setTimeout(()=>{if(!locked&&index<quiz.length)speak(f.hanzi);},250); }
+ if(k.mode==='image'){$('questionHanzi').textContent='';$('questionPinyin').textContent='';}
+ const choices=shuffle([f,...shuffle(fruits.filter(x=>x.hanzi!==f.hanzi)).slice(0,3)]);const box=$('answers');box.innerHTML='';
+ choices.forEach((c,n)=>{const b=document.createElement('button');b.className='answer';b.innerHTML=`<span class="letter">${String.fromCharCode(65+n)}</span><span><strong>${c.id}</strong></span>`;b.onclick=()=>chooseAnswer(c.hanzi===f.hanzi,b);box.appendChild(b);});
+ $('timer').textContent='30';$('timer').className='timer';$('timerFill').style.width='100%';$('timerFill').className='';deadline=Date.now()+30000;timerId=setInterval(tick,100);announce(`Soal ${index+1} dari 20`);
+}
+function tick(){if(locked)return;const left=Math.max(0,deadline-Date.now());const secs=Math.ceil(left/1000);$('timer').textContent=secs;$('timer').className='timer'+(secs<=5?' danger':secs<=10?' warning':'');$('timerFill').style.width=(left/30000*100)+'%';$('timerFill').className=secs<=5?'danger':'';if(secs===15)sayId('Semangat! Kamu pasti bisa!');if(secs<=5&&secs>0&&secs!==lastSpoken){lastSpoken=secs;if(audioOn&&secs===5)sayId('Lima detik lagi!');}if(left<=0)timeOut();}
+let lastSpoken=0;
+function chooseAnswer(isCorrect,button){if(locked)return;locked=true;stopTimer();const elapsed=Date.now()-questionStart;const prior=answersLog[index];const f=quiz[index];if(prior&&!prior.missed){if(prior.correct===true)score=Math.max(0,score-(prior.points||100));}if(!prior){totalResponseMs+=Math.min(elapsed,30000);answered++;}else if(prior.missed){missed=Math.max(0,missed-1);answered++;totalResponseMs=Math.max(0,totalResponseMs-prior.elapsed+Math.min(elapsed,30000));}else{totalResponseMs=Math.max(0,totalResponseMs-prior.elapsed+Math.min(elapsed,30000));if(prior.correct===true)correct--;if(prior.correct===false)wrong--;}const buttons=[...$('answers').querySelectorAll('button')];buttons.forEach(b=>{b.disabled=true;});const selectedLabel=button.querySelector('strong').textContent;const correctLabel=f.id;
+if(isCorrect){correct++;let points=100+(elapsed<=10000?20:0);score+=points;button.classList.add('correct');$('feedback').textContent=elapsed<=10000?'太棒了！ Hebat! +120 ⭐':'正确！ Benar! +100 ⭐';$('feedback').style.color='#159b39';speak('太棒了');if(correct%5===0)confetti(12);}else{wrong++;button.classList.add('wrong');buttons.forEach(b=>{if(b.querySelector('strong').textContent===correctLabel)b.classList.add('correct');});$('feedback').textContent='没关系！ Tidak apa-apa, coba lagi!';$('feedback').style.color='#e82f5d';sayId('Tidak apa-apa, ayo belajar lagi!');}
+answersLog[index]={correct:isCorrect,elapsed,missed:false,points:isCorrect?(100+(elapsed<=10000?20:0)):0};$('answeredCount').textContent=`Sudah diproses: ${index+1}/20`;$('progressFill').style.width=`${(index+1)/quiz.length*100}%`;$('nextBtn').disabled=false;announce(isCorrect?'Jawaban benar':'Jawaban salah');}
+function timeOut(){
+ if(locked)return;
+ locked=true;stopTimer();missed++;
+ const elapsed=30000;totalResponseMs+=elapsed;
+ // Timeout is a skipped question, not a correct or incorrect answer.
+ answersLog[index]={correct:null,elapsed,missed:true};
+ $('feedback').textContent='Waktu habis! Soal dilewati tanpa dinilai benar atau salah.';
+ $('feedback').style.color='#b47700';
+ $('answeredCount').textContent=`Sudah diproses: ${index+1}/20`;
+ $('progressFill').style.width=`${(index+1)/quiz.length*100}%`;
+ $('nextBtn').disabled=false;
+ announce('Waktu habis, soal dilewati tanpa penilaian');
+}
+function nextQuestion(){if(!locked)return;index++;if(index%5===0&&index<20){sayId(index===10?'Separuh perjalanan sudah selesai!':index===15?'Sedikit lagi sampai garis finis!':'Lima soal selesai! Kamu hebat!');}renderQuestion();}
+function prevQuestion(){
+ stopTimer();
+ if(index>0){index--;renderQuestion();}
+ else {confirmHome();}
+}
+function finishGame(){stopTimer();showScreen('result');correct=answersLog.filter(a=>a&&a.correct===true).length;wrong=answersLog.filter(a=>a&&a.correct===false).length;missed=answersLog.filter(a=>a&&a.missed).length;answered=correct+wrong;score=answersLog.reduce((sum,a)=>sum+(a&&a.correct===true?(a.points||100):0),0);totalResponseMs=answersLog.reduce((sum,a)=>sum+(a?a.elapsed:0),0);const pct=Math.round(correct/20*100);let title=correct<=5?'Penjelajah Buah':correct<=10?'Sahabat Buah':correct<=15?'Jagoan Kosakata':correct<=19?'Pahlawan Mandarin':'Raja/Ratu Taman Buah';const stars=pct>=90?'★★★':pct>=70?'★★☆':pct>=50?'★☆☆':'☆☆☆';$('scoreBig').textContent=`${score} poin`;$('stars').textContent=stars;$('achievement').textContent=title;$('correctStat').textContent=correct;$('wrongStat').textContent=wrong;$('missStat').textContent=missed;$('percentStat').textContent=pct+'%';$('avgStat').textContent=(totalResponseMs/20/1000).toFixed(1)+' dtk';let best=Number(localStorage.getItem('lcnFruitBest')||0);if(score>best){best=score;try{localStorage.setItem('lcnFruitBest',String(best));}catch(e){}}$('bestStat').textContent=best;$('resultTitle').textContent=pct===100?'Luar Biasa! Sempurna!':'Petualangan Selesai!';$('resultMessage').textContent=pct>=90?'Hebat sekali! Kamu benar-benar jagoan Mandarin!':pct>=50?'Bagus! Terus berlatih agar makin hafal semua nama buah.':'Tidak apa-apa. Yuk, belajar kartu buah dulu lalu coba lagi!';$('resultMascot').textContent=pct>=90?'🐼🏆':'🐼🌟';if(pct>=50)confetti(pct===100?70:25);sayId(pct>=90?'Selamat! Kamu hebat sekali!':'Petualangan selesai. Terus semangat belajar!');}
+function confetti(n=30){const symbols=['⭐','🌸','🍎','🍊','✨','🎉','🍓'];for(let i=0;i<n;i++){const el=document.createElement('span');el.className='confetti';el.textContent=symbols[Math.floor(Math.random()*symbols.length)];el.style.left=Math.random()*100+'vw';el.style.animationDelay=Math.random()*.8+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),3500);}}
+function speakCurrent(){if(index<quiz.length)speak(quiz[index].hanzi);}
+buildLearn();
+</script>
+</body>
+</html>
